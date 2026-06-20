@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  bacheca-protesica:
+    build: .
+    container_name: bacheca-protesica
+    restart: always
+    ports:
+      - "3000:3000"
+    volumes:
+      # Mappa la cartella del database e dei backup direttamente sul NAS Synology.
+      # Sostituisci il lato sinistro con il percorso della cartella che desideri sul tuo NAS.
+      # Es: /volume1/docker/bacheca-protesica/data:/app/data
+      - ./data:/app/data
+    environment:
+      - NODE_ENV=production
